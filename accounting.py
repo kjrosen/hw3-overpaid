@@ -16,12 +16,22 @@ def check_paid(customer_orders,melon_cost):
         number = int(number)
         paid = float(paid)
 
-        ##confirms the amount we SHOULD have recieved for total order
+        ##confirms the amount we SHOULD have recieved for total order, and went wrong
         expected = number * melon_cost
+        difference = max(paid,expected) - min(paid,expected)
 
         ##if the amount paid is different than the amount owed print an error
         if expected != paid:
-            print(f"{name} paid ${paid}. Expected ${expected}")
+            print(f"{name} paid ${paid}. Expected ${expected:.2f}.")
+            ##:.2f clarifies I want a float with 2 decimal points
+
+            ##clarifies whether they over or underpaid
+            if expected < paid:
+                wrong_pay = "overpaid"
+            elif expected > paid:
+                wrong_pay = "underpaid"
+
+            print(f"They {wrong_pay} by {difference:.2f}.")
 
     customers.close()# close file when done
 
