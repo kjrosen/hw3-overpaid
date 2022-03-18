@@ -19,7 +19,10 @@ for line in customers:
     expected = number * melon_cost
 
     if expected != paid:
-        print(f"{name} paid ${paid} \nexpected ${expected}")
+        print(f"{name} paid ${paid} \n\texpected ${expected}")
+
+
+
 # customer1_name = "Joe"
 # customer1_melons = 5
 # customer1_paid = 5.00
